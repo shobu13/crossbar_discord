@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "autobahn": "^19.12.1",
     "core-js": "^3.4.3",
     "vue": "^2.6.10",
     "vuetify": "^2.1.0"
@@ -37,7 +38,10 @@
     "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
-    }
+    },
+    "plugins": [
+      "only-warn"
+    ]
   },
   "browserslist": [
     "> 1%",

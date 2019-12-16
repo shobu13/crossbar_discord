@@ -29,11 +29,23 @@
 </template>
 
 <script>
+    import autobahn from 'autobahn'
+
     export default {
         name: 'HelloWorld',
 
         data: () => ({
             //
         }),
+        mounted() {
+            var connection = new autobahn.Connection({url: 'ws://127.0.0.1:8081/ws', realm: 'crossbar_discord'})
+            connection.onopen = (session) => {
+                console.log("saucisse");
+                session.subscribe('com.myapp.topic1', (args) => {
+                    console.log(args)
+                })
+            };
+            connection.open();
+        }
     };
 </script>
