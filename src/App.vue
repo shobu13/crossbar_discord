@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <v-app id=main :style="{background: $vuetify.theme.themes[theme].background}">
+        <v-app-bar
+                app
+                color="background"
+        >
+            <div class="d-flex align-center">
+                VueCord
+            </div>
+
+            <v-spacer></v-spacer>
+
+            <v-switch v-model="$vuetify.theme.dark" label="dark theme"/>
+        </v-app-bar>
+
+        <v-content>
+            <HelloWorld/>
+        </v-content>
+    </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import HelloWorld from './components/HelloWorld';
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'App',
+
+        components: {
+            HelloWorld,
+        },
+
+        data: () => ({
+            //
+        }),
+        computed: {
+            theme() {
+                return (this.$vuetify.theme.dark) ? 'dark' : "light"
+            }
+        },
+        mounted() {
+            //
+        }
+    };
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
